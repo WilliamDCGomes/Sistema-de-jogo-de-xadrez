@@ -1,11 +1,12 @@
 ﻿using System;
-using Tabuleiro;
+using System.Net.Http.Headers;
+using Tabuleiros;
 
 namespace xadrez_console {
     class Program {
         static void Main(string[] args) {
-            Posicao p = new Posicao(3, 4);
-            Console.WriteLine($"Posição: {p}");
+            Tabuleiro tab = new Tabuleiro(8, 8);
+            Console.WriteLine();
         }
     }
 }

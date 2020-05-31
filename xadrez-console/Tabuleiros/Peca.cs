@@ -15,8 +15,6 @@
         public void IncrementarQntMovimentos() {
             QntMovimentos++;
         }
-        public abstract bool[,] MovimentosPossiveis() {
-
-        }
+        public abstract bool[,] MovimentosPossiveis();
     }
 }

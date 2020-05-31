@@ -42,7 +42,7 @@ namespace Xadrez {
                 if (Tab.Peca(pos) != null && Tab.Peca(pos).Cor != Cor) {
                     break;
                 }
-                pos.Linha --;
+                pos.Coluna --;
             }
             return mat;
         }

@@ -3,8 +3,8 @@ using Tabuleiros;
 namespace Xadrez {
     class PartidaDeXadrez {
         public Tabuleiro Tab { get; private set; }
-        private int Turno;
-        private Cor JogadorAtual;
+        public int Turno { get; private set; }
+        public Cor JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
 
         public PartidaDeXadrez() {
@@ -20,6 +20,19 @@ namespace Xadrez {
             p.IncrementarQntMovimentos();
             Peca pecaCapturada = Tab.RetirarPeca(destino);
             Tab.ColocarPeca(p, destino);
+        }
+        public void RealizaJogada(Posicao origem, Posicao destino) {
+            ExecutaMovimento(origem, destino);
+            Turno++;
+            MudaJogador();
+        }
+        private void MudaJogador() {
+            if (JogadorAtual == Cor.Branca) {
+                JogadorAtual = Cor.Preta;
+            }
+            else {
+                JogadorAtual = Cor.Branca;
+            }
         }
         private void ColocarPecas() {
             Tab.ColocarPeca(new Torre(Tab, Cor.Branca), new PosicaoXadrez('c', 1).ToPosicao());

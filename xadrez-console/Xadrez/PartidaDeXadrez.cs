@@ -47,14 +47,19 @@ namespace Xadrez {
                 DesfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
-            if (EstaEmXeque(Adversaria(JogadorAtual))){
+            if (EstaEmXeque(Adversaria(JogadorAtual))) {
                 Xeque = true;
             }
             else {
                 Xeque = false;
             }
-            Turno++;
-            MudaJogador();
+            if (TesteXequeMate(Adversaria(JogadorAtual))) {
+                Terminada = true;
+            }
+            else {
+                Turno++;
+                MudaJogador();
+            }
         }
         public void ValidarPosicaoDeOrigem(Posicao pos) {
             if(Tab.Peca(pos) == null) {
@@ -127,6 +132,28 @@ namespace Xadrez {
                 }
             }
             return false;
+        }
+        public bool TesteXequeMate(Cor cor) {
+            if (!EstaEmXeque(cor)) {
+                return false;
+            }
+            foreach(Peca x in PecasEmJogo(cor)) {
+                bool[,] mat = x.MovimentosPossiveis();
+                for(int i = 0; i < Tab.Linhas; i++) {
+                    for(int j = 0; j < Tab.Colunas; j++) {
+                        if(mat[i, j]) {
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutaMovimento(x.Posicao, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(x.Posicao, destino, pecaCapturada);
+                            if (!testeXeque) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
         public void ColocarNovaPeca(char coluna, int linha, Peca peca) {
             Tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());

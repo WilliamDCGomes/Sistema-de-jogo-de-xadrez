@@ -11,7 +11,15 @@ namespace xadrez_console.Tabuleiros {
             Console.WriteLine();
             Console.WriteLine($"Turno {partida.Turno}");
             if (!partida.Terminada) {
-                Console.WriteLine($"Aguardando jogada: {partida.JogadorAtual}");
+                if(partida.JogadorAtual == Cor.Preta) {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"Aguardando jogada: {partida.JogadorAtual}");
+                    Console.ForegroundColor = aux;
+                }
+                else {
+                    Console.WriteLine($"Aguardando jogada: {partida.JogadorAtual}");
+                }
                 if (partida.Xeque) {
                     Console.WriteLine("XEQUE!");
                 }
@@ -23,7 +31,11 @@ namespace xadrez_console.Tabuleiros {
             }
         }
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
+            ConsoleColor aux2 = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("=================");
             Console.WriteLine("Peças capturadas:");
+            Console.ForegroundColor = aux2;
             Console.Write("Brancas: ");
             ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));
             ConsoleColor aux = Console.ForegroundColor;
@@ -31,6 +43,10 @@ namespace xadrez_console.Tabuleiros {
             Console.Write("Pretas: ");
             ImprimirConjunto(partida.PecasCapturadas(Cor.Preta));
             Console.ForegroundColor = aux;
+            aux2 = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("=================");
+            Console.ForegroundColor = aux2;
         }
         public static void ImprimirConjunto(HashSet<Peca> conjunto) {
             Console.Write("[");
@@ -40,14 +56,30 @@ namespace xadrez_console.Tabuleiros {
             Console.WriteLine("]");
         }
         public static void ImprimirTabuleiro(Tabuleiro tab) {
+            ConsoleColor aux1 = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("=================");
+            Console.WriteLine("    TABULEIRO");
+            Console.ForegroundColor = aux1;
+            Console.WriteLine();
             for (int i= 0;i< tab.Linhas; i++){
+                ConsoleColor aux2 = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write($"{8 - i} ");
-                for(int j = 0; j < tab.Colunas; j++) {
+                Console.ForegroundColor = aux2;
+                for (int j = 0; j < tab.Colunas; j++) {
                     ImprimirPeca(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
+            ConsoleColor aux3 = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("  a b c d e f g h");
+            Console.ForegroundColor = aux3;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine("=================");
+            Console.ForegroundColor = aux1;
         }
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis) {
             ConsoleColor fundoOriginal = Console.BackgroundColor;

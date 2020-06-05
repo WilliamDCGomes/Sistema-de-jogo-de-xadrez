@@ -1,5 +1,4 @@
 ﻿using Tabuleiros;
-
 namespace Xadrez {
     class Bispo : Peca {
         public Bispo(Tabuleiro tab, Cor cor)

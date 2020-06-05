@@ -2,8 +2,6 @@
 using Tabuleiros;
 using xadrez_console.Tabuleiros;
 using Xadrez;
-using System.Xml;
-
 namespace xadrez_console {
     class Program {
         static void Main(string[] args) {

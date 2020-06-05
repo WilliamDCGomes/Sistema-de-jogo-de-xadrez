@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Collections.Generic;
 using Tabuleiros;
 using xadrez_console.Xadrez;
-
 namespace Xadrez {
     class PartidaDeXadrez {
         public Tabuleiro Tab { get; private set; }
@@ -179,7 +176,6 @@ namespace Xadrez {
             ColocarNovaPeca('f', 2, new Peao(Tab, Cor.Branca));
             ColocarNovaPeca('g', 2, new Peao(Tab, Cor.Branca));
             ColocarNovaPeca('h', 2, new Peao(Tab, Cor.Branca));
-
             ColocarNovaPeca('a', 8, new Torre(Tab, Cor.Preta));
             ColocarNovaPeca('b', 8, new Cavalo(Tab, Cor.Preta));
             ColocarNovaPeca('c', 8, new Bispo(Tab, Cor.Preta));

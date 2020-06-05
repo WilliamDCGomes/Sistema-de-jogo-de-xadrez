@@ -1,5 +1,4 @@
-﻿using System.Data;
-using Tabuleiros;
+﻿using Tabuleiros;
 namespace Xadrez {
     class Rei : Peca {
         public Rei(Tabuleiro tab, Cor cor) 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using Tabuleiros;
 using xadrez_console.Xadrez;
 namespace Xadrez {
@@ -29,6 +30,20 @@ namespace Xadrez {
             if(pecaCapturada != null) {
                 Capturadas.Add(pecaCapturada);
             }
+            if(p is Rei && destino.Coluna == origem.Coluna + 2) {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna + 1);
+                Peca T = Tab.RetirarPeca(origemT);
+                T.IncrementarQntMovimentos();
+                Tab.ColocarPeca(T, destinoT);
+            }
+            if (p is Rei && destino.Coluna == origem.Coluna - 2) {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna - 1);
+                Peca T = Tab.RetirarPeca(origemT);
+                T.IncrementarQntMovimentos();
+                Tab.ColocarPeca(T, destinoT);
+            }
             return pecaCapturada;
         }
         public void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada) {
@@ -39,6 +54,20 @@ namespace Xadrez {
                 Capturadas.Remove(pecaCapturada);
             }
             Tab.ColocarPeca(p, origem);
+            if (p is Rei && destino.Coluna == origem.Coluna + 2) {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna + 1);
+                Peca T = Tab.RetirarPeca(destinoT);
+                T.DecrementarQntMovimentos();
+                Tab.ColocarPeca(T, origemT);
+            }
+            if (p is Rei && destino.Coluna == origem.Coluna - 2) {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna - 1);
+                Peca T = Tab.RetirarPeca(destinoT);
+                T.DecrementarQntMovimentos();
+                Tab.ColocarPeca(T, origemT);
+            }
         }
         public void RealizaJogada(Posicao origem, Posicao destino) {
             Peca pecaCapturada = ExecutaMovimento(origem, destino);

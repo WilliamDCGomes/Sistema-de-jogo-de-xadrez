@@ -46,6 +46,19 @@ namespace Xadrez {
                 T.IncrementarQntMovimentos();
                 Tab.ColocarPeca(T, destinoT);
             }
+            if(p is Peca) {
+                if(origem.Coluna != destino.Coluna && pecaCapturada == null) {
+                    Posicao posP;
+                    if(p.Cor == Cor.Branca) {
+                        posP = new Posicao(destino.Linha + 1, destino.Coluna);
+                    }
+                    else {
+                        posP = new Posicao(destino.Linha - 1, destino.Coluna);
+                    }
+                    pecaCapturada = Tab.RetirarPeca(posP);
+                    Capturadas.Add(pecaCapturada);
+                }
+            }
             return pecaCapturada;
         }
         public void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada) {
@@ -69,6 +82,19 @@ namespace Xadrez {
                 Peca T = Tab.RetirarPeca(destinoT);
                 T.DecrementarQntMovimentos();
                 Tab.ColocarPeca(T, origemT);
+            }
+            if(p is Peao) {
+                if(origem.Coluna != destino.Coluna && pecaCapturada == VulneravelEnPassant) {
+                    Peca peao = Tab.RetirarPeca(destino);
+                    Posicao posP;
+                    if(p.Cor == Cor.Branca) {
+                        posP = new Posicao(3, destino.Coluna);
+                    }
+                    else {
+                        posP = new Posicao(4, destino.Coluna);
+                    }
+                    Tab.ColocarPeca(peao, posP);
+                }
             }
         }
         public void RealizaJogada(Posicao origem, Posicao destino) {

@@ -11,12 +11,14 @@ namespace Xadrez {
         private HashSet<Peca> Pecas;
         private HashSet<Peca> Capturadas;
         public bool Xeque { get; private set; }
+        private Peca VulneravelEnPassant;
 
         public PartidaDeXadrez() {
             Tab = new Tabuleiro(8, 8);
             Turno = 1;
             JogadorAtual = Cor.Branca;
             Terminada = false;
+            VulneravelEnPassant = null;
             Pecas = new HashSet<Peca>();
             Capturadas = new HashSet<Peca>();
             ColocarPecas();
@@ -87,6 +89,14 @@ namespace Xadrez {
             else {
                 Turno++;
                 MudaJogador();
+            }
+            Peca p = Tab.Peca(destino);
+            //Jogada En Passant
+            if(p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha - 2)) {
+                VulneravelEnPassant = p;
+            }
+            else {
+                VulneravelEnPassant = null;
             }
         }
         public void ValidarPosicaoDeOrigem(Posicao pos) {

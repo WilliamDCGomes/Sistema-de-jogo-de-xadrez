@@ -107,6 +107,8 @@ namespace Xadrez {
             Peca p = Tab.Peca(destino);
             if(p is Peao) {
                 if((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7)) {
+                    p = Tab.RetirarPeca(destino);
+                    Pecas.Remove(p);
                     while (true) {
                         Console.Clear();
                         Console.WriteLine("Para qual peça você deseja promover o peão?");
@@ -117,32 +119,24 @@ namespace Xadrez {
                         Console.WriteLine("(E) Não desejo promover o peão");
                         char pecaEscolhida = char.Parse(Console.ReadLine());
                         if (pecaEscolhida == 'A' || pecaEscolhida == 'a') {
-                            p = Tab.RetirarPeca(destino);
-                            Pecas.Remove(p);
                             Peca bispo = new Bispo(Tab, p.Cor);
                             Tab.ColocarPeca(bispo, destino);
                             Pecas.Add(bispo);
                             break;
                         }
                         else if (pecaEscolhida == 'B' || pecaEscolhida == 'b') {
-                            p = Tab.RetirarPeca(destino);
-                            Pecas.Remove(p);
                             Peca cavalo = new Cavalo(Tab, p.Cor);
                             Tab.ColocarPeca(cavalo, destino);
                             Pecas.Add(cavalo);
                             break;
                         }
                         else if (pecaEscolhida == 'C' || pecaEscolhida == 'c') {
-                            p = Tab.RetirarPeca(destino);
-                            Pecas.Remove(p);
                             Peca dama = new Dama(Tab, p.Cor);
                             Tab.ColocarPeca(dama, destino);
                             Pecas.Add(dama);
                             break;
                         }
                         else if (pecaEscolhida == 'D' || pecaEscolhida == 'd') {
-                            p = Tab.RetirarPeca(destino);
-                            Pecas.Remove(p);
                             Peca torre = new Torre(Tab, p.Cor);
                             Tab.ColocarPeca(torre, destino);
                             Pecas.Add(torre);

@@ -116,7 +116,6 @@ namespace Xadrez {
                         Console.WriteLine("(B) Cavalo");
                         Console.WriteLine("(C) Rainha");
                         Console.WriteLine("(D) Torre");
-                        Console.WriteLine("(E) Não desejo promover o peão");
                         char pecaEscolhida = char.Parse(Console.ReadLine());
                         if (pecaEscolhida == 'A' || pecaEscolhida == 'a') {
                             Peca bispo = new Bispo(Tab, p.Cor);
@@ -140,9 +139,6 @@ namespace Xadrez {
                             Peca torre = new Torre(Tab, p.Cor);
                             Tab.ColocarPeca(torre, destino);
                             Pecas.Add(torre);
-                            break;
-                        }
-                        else if(pecaEscolhida == 'E' || pecaEscolhida == 'e') {
                             break;
                         }
                         else {

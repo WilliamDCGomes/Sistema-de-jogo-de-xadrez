@@ -1,15 +1,15 @@
-# Sistema de Automatização de uma Linha de Montagem
+# Sistema de Jogo de Xadrez
 
-## Sistema criado com o intuito de automatizar o controle de produção de uma linha de montagem real
+## Sistema criado com o intuito de recriar o jogo de xadrez dentro de um console
 
-### Paínel de Controle do Supervisor da Linha
+### O Sistema
 
-![Painel de Controle](https://github.com/WilliamDCGomes/Automatizacao-Linha-De-Montagem/blob/master/ArquivosReadme/Gif1.gif)
+![Imagem do Sistema](https://github.com/WilliamDCGomes/Sistema-de-jogo-de-xadrez/blob/master/Arquivos%20Readme/img1.png)
 
-### Acesso do operário
+### Funcionamento
 
-![Acesso Operario](https://github.com/WilliamDCGomes/Automatizacao-Linha-De-Montagem/blob/master/ArquivosReadme/Gif2.gif)
+#### Movendo as Peças
+![Movendo as Peças](https://github.com/WilliamDCGomes/Sistema-de-jogo-de-xadrez/blob/master/Arquivos%20Readme/Gif1.gif)
 
-### Exemplo de Controle de Atraso
-
-![Controle de Acesso](https://github.com/WilliamDCGomes/Automatizacao-Linha-De-Montagem/blob/master/ArquivosReadme/Gif3.gif)
+#### Xeque Mate!
+![Dando Xeque Mate](https://github.com/WilliamDCGomes/Sistema-de-jogo-de-xadrez/blob/master/Arquivos%20Readme/Gif2.gif)

@@ -13,14 +13,14 @@ namespace xadrez_console {
                         Tela.ImprimirPartida(partida);
                         Console.WriteLine();
                         Console.Write("Origem: ");
-                        Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                        Posicao origem = Tela.LerPosicaoXadrez(0).ToPosicao();
                         partida.ValidarPosicaoDeOrigem(origem);
                         bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
                         Console.Clear();
                         Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
                         Console.WriteLine();
                         Console.Write("Destino: ");
-                        Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                        Posicao destino = Tela.LerPosicaoXadrez(1).ToPosicao();
                         partida.ValidarPosicaoDeDestino(origem, destino);
                         partida.RealizaJogada(origem, destino);
                     }

@@ -101,10 +101,38 @@ namespace xadrez_console.Tabuleiros {
             Console.WriteLine("  a b c d e f g h");
             Console.BackgroundColor = fundoOriginal;
         }
-        public static PosicaoXadrez LerPosicaoXadrez() {
-            string s = Console.ReadLine();
-            char coluna = s[0];
-            int linha = int.Parse(s[1].ToString());
+        public static PosicaoXadrez LerPosicaoXadrez(int determina) {
+            char coluna = ' ';
+            int linha = 0;
+            while (true){
+                string s = Console.ReadLine();
+                if (s.Length != 2 || (!s[1].Equals('1') && !s[1].Equals('2') && !s[1].Equals('3') && !s[1].Equals('4') && !s[1].Equals('5') && !s[1].Equals('6') && !s[1].Equals('7') && !s[1].Equals('8'))){
+                    Console.WriteLine("Movimento inválido");
+                    Console.WriteLine();
+                    if (determina == 0){
+                        Console.Write("Origem: ");
+                    }
+                    else{
+                        Console.Write("Destino: ");
+                    }
+                    continue;
+                }
+                coluna = s[0];
+                linha = int.Parse(s[1].ToString());
+                if ((coluna.Equals('a')||coluna.Equals('b')||coluna.Equals('c')||coluna.Equals('d')||coluna.Equals('e')||coluna.Equals('f')||coluna.Equals('g')||coluna.Equals('h')) && (linha>=1 && linha<=8)){
+                    break;
+                }
+                else{
+                    Console.WriteLine("Movimento inválido");
+                    Console.WriteLine();
+                    if (determina == 0){
+                        Console.Write("Origem: ");
+                    }
+                    else{
+                        Console.Write("Destino: ");
+                    }
+                }
+            }
             return new PosicaoXadrez(coluna, linha);
         }
         public static void ImprimirPeca(Peca peca) {
